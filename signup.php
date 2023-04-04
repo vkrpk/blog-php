@@ -1,6 +1,6 @@
 <?php
 $titre = 'Créer un compte | Mon blog';
-include_once 'layout/header.php'; ?>
+include_once 'layout/header.php';?>
 
 <h1 class="mb-4">Créer un compte</h1>
 <form action="signup-handler.php" method="post">
@@ -18,11 +18,11 @@ include_once 'layout/header.php'; ?>
 	</div>
 
 
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label for="image">Image</label>
 		<input type="url" class="form-control" name="image" id="image" aria-describedby="image-help" placeholder="Image">
 		<small id="image-help" class="form-text text-muted">L'URL qui pointe vers l'image d'illustration de l'article.</small>
-	</div>
+	</div> -->
 
 
 	<div class="form-group">

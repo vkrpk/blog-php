@@ -2,14 +2,17 @@
 $titre = 'Mon blog';
 include_once 'layout/header.php';
 
-if (!empty($_SESSION['pseudo'])) $pseudo = $_SESSION['pseudo'];
-else $pseudo = 'inconnu';
+if (!empty($_SESSION['pseudo'])) {
+    $pseudo = $_SESSION['pseudo'];
+} else {
+    $pseudo = 'inconnu';
+}
 
 ?>
 
 
 <div class="jumbotron">
-    <h1 class="display-4">Bienvenue sur mon blog</h1>
+    <h1 class="display-4">Bienvenue sur articles.fr</h1>
     <p class="lead">Bonjour <?php echo $pseudo; ?></p>
     <hr class="my-2">
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, nulla culpa esse autem repellat distinctio
@@ -46,4 +49,4 @@ else $pseudo = 'inconnu';
         eligendi?</span>
 </p>
 
-<?php include_once 'layout/footer.php'; ?>
+<?php include_once 'layout/footer.php';?>

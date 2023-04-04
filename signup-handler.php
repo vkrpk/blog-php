@@ -1,27 +1,26 @@
 <?php
 
 if (
-	!empty($_POST['pseudo'])
-	&& !empty($_POST['email'])
-	&& !empty($_POST['password'])
-	&& !empty($_POST['password_conf'])
+    !empty($_POST['pseudo'])
+    && !empty($_POST['email'])
+    && !empty($_POST['password'])
+    && !empty($_POST['password_conf'])
 
-	&& $_POST['password'] === $_POST['password_conf']
+    && $_POST['password'] === $_POST['password_conf']
 
-	&& strlen($_POST['password']) >= 6
+    && strlen($_POST['password']) >= 6
 
-	&& filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
+    && filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
 ) {
 
-	include_once './fonctions/fonctions_bdd.php';
+    include_once './fonctions/fonctions_bdd.php';
 
-	createUser();
+    createUser();
 
-	header('location: index.php');
-	die;
-
+    header('location: index.php');
+    die;
 
 } else {
-	echo 'Qui fait le malin, tombe dans le ravin !';
-	die;
+    echo 'Erreur lors de la saisie des données, veuillez recommencez s\'il vous plaît';
+    die;
 }

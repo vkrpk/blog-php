@@ -5,23 +5,22 @@ session_start();
 include_once 'fonctions/mes_fonctions.php';
 
 if (empty($_SESSION['is_connected'])) {
-	if (!empty($_COOKIE['user_id'])) {
+    if (!empty($_COOKIE['user_id'])) {
 
+        include_once 'fonctions/fonctions_bdd.php';
 
-		include_once 'fonctions/fonctions_bdd.php';
+        $bdd = connectDB();
 
-		$bdd = connectDB();
+        $requete = 'SELECT * FROM utilisateurs WHERE id = ?';
 
-		$requete = 'SELECT * FROM utilisateurs WHERE id = ?';
+        $statement = $bdd->prepare($requete);
+        $statement->bindParam(1, $_COOKIE['user_id']);
+        $statement->execute();
 
-		$statement = $bdd->prepare($requete);
-		$statement->bindParam(1, $_COOKIE['user_id']);
-		$statement->execute();
+        $utilisateur = $statement->fetch();
 
-		$utilisateur = $statement->fetch();
-
-		createSession($utilisateur);
-	}
+        createSession($utilisateur);
+    }
 }
 ?>
 <!doctype html>
@@ -42,11 +41,15 @@ if (empty($_SESSION['is_connected'])) {
 <body class="bg-secondary">
 
 	<div class="container scroll bg-light">
-		<nav class="navbar navbar-expand navbar-light bg-light" style="overflow-x: auto;">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="index.php">Mon blog</a>
-				<div class="collapse navbar-collapse" id="navbarNav">
-					<ul class="navbar-nav">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="index.php">Articles.fr</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="liste-articles.php">Mes articles</a>
 						</li>
@@ -54,23 +57,19 @@ if (empty($_SESSION['is_connected'])) {
 							<a class="nav-link" href="creer-article.php">Créer un article</a>
 						</li>
 
-						<?php if (!empty($_SESSION['is_connected'])) { ?>
+						<?php if (!empty($_SESSION['is_connected'])) {?>
 							<li class="nav-item">
 								<a class="nav-link" href="logout.php">Se déconnecter</a>
 							</li>
-						<?php } else { ?>
+						<?php } else {?>
 							<li class="nav-item">
 								<a class="nav-link" href="login.php">Se connecter</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="signup.php">Créer un compte</a>
 							</li>
-						<?php } ?>
-
+						<?php }?>
 					</ul>
-				</div>
-			</div>
-		</nav>
-
-
-		<?php printError(); ?>
+  </div>
+ </nav>
+		<?php printError();?>
