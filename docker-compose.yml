@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: database-mysql_8.2.0
+    restart: unless-stopped
+    build:
+      context: ./sql
+    volumes:
+      - mysql_8.2.0:/var/lib/mysql
+    networks:
+      - blog-php-network
+    ports:
+        - '3306:3306'
+        - '33060:33060'
+  phpmyadmin:
+    depends_on:
+      - database
+    container_name: phpmyadmin-mysql-mysql_8.2.0
+    image: phpmyadmin:5.2.1-apache
+    restart: unless-stopped
+    ports:
+      - '3308:80'
+    environment:
+      - PMA_HOST=database
+    networks:
+      - blog-php-network
+#  app:
+#    depends_on:
+#      - bdd
+#    container_name: app
+#    build: . # Si on a plusieurs Dockerfile, on peut préciser lequel on veut utiliser
+#    ports:
+#      - '3001:3000'
+
+volumes:
+  mysql_8.2.0:
+  
+networks:
+  blog-php-network:
+  
+  
+  
+  

@@ -20,8 +20,10 @@ if (
 ) {
 	$bdd = connectDB();
 
-	$requete = 'INSERT INTO articles (titre, contenu, image, image_alt, image_copyright, date) 
-							VALUE (?, ?, ?, ?, ?, ?)';
+	$requete = 'INSERT INTO articles (titre, contenu, image, image_alt, image_copyright, date, lien) 
+							VALUE (?, ?, ?, ?, ?, ?, ?)';
+
+    $lien = 'article' . uniqid() . '.php';
 
 	$statement = $bdd->prepare($requete);
 	$date = date('Y-m-d');			
@@ -42,6 +44,7 @@ if (
 	$statement->bindParam(4, $_POST['image_alt']);
 	$statement->bindParam(5, $_POST['image_copyright']);
 	$statement->bindParam(6, $date);
+	$statement->bindParam(7, $lien);
 
 	$statement->execute();
 

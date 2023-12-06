@@ -1,7 +1,7 @@
-<footer class="bg-dark text-light rounded text-center my-4">&copy; victork 2022</footer>
-
-
 </div>
+<footer class="bg-dark text-light rounded text-center mt-4">&copy; victork 2024</footer>
+
+
 
 <script src="https://kit.fontawesome.com/d73d3ebfb4.js" crossorigin="anonymous"></script>
 <script src="main.js"></script>

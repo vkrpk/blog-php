@@ -1,2 +1,3 @@
-# config/config_bdd.php
-# images/*
+config/config_bdd.php
+images/*
+.idea

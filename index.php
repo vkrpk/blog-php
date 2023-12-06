@@ -5,7 +5,7 @@ include_once 'layout/header.php';
 if (!empty($_SESSION['pseudo'])) {
     $pseudo = $_SESSION['pseudo'];
 } else {
-    $pseudo = 'inconnu';
+    $pseudo = 'visiteur';
 }
 
 ?>
@@ -13,40 +13,15 @@ if (!empty($_SESSION['pseudo'])) {
 
 <div class="jumbotron">
     <h1 class="display-4">Bienvenue sur articles.fr</h1>
-    <p class="lead">Bonjour <?php echo $pseudo; ?></p>
+    <p class="lead">Bonjour <?php echo $pseudo; ?>,</p>
     <hr class="my-2">
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, nulla culpa esse autem repellat distinctio
-        exercitationem consequatur tenetur tempore deserunt placeat enim. Laborum optio, dolor rerum mollitia
-        voluptates tenetur consequatur!
-        Numquam omnis dolorem quaerat vero explicabo! Laudantium tempore odio autem atque deserunt! Veniam,
-        facilis cumque quibusdam maxime in nam cum qui quisquam minus ducimus. Veniam iure totam architecto quod
-        quia.
-        Esse eveniet in nam distinctio, deserunt ex animi ad dolores quasi nihil minima repellat delectus,
-        quibusdam nobis doloribus nulla laboriosam, eligendi quisquam possimus ab porro tenetur numquam. Libero,
-        harum quo!
-        Aliquid dolore excepturi laboriosam, rem explicabo pariatur dolorum fuga ipsam cupiditate ipsa, totam
-        vel iure harum doloremque incidunt blanditiis quae quasi sapiente sit! Ab ex asperiores voluptatem
-        placeat quae aspernatur.</p>
+    <p>Découvrez un monde de connaissances et de découvertes. Sur notre site, nous nous efforçons de partager des informations utiles et intéressantes pour tous nos lecteurs. Que vous soyez passionné par la science, l'art, la technologie ou la culture, il y a toujours quelque chose de nouveau et d'excitant à explorer.</p>
 </div>
 
 
-<h2>Qui suis-je ?</h2>
+<h2>Qui sommes-nous ?</h2>
 <p class="my-4">
-    <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi laborum eligendi exercitationem facilis
-        rerum nihil deserunt ut, officiis magnam praesentium fugiat optio deleniti repudiandae. Blanditiis culpa
-        inventore vel aspernatur quasi!</span>
-    <span>Enim iste nam quos modi laboriosam fugit pariatur expedita quasi sit blanditiis est inventore dolorem
-        similique, reiciendis tenetur neque temporibus nulla incidunt repellat quae, sapiente rerum saepe
-        officia! Quas, dolores!</span>
-    <span>Corporis repellendus praesentium nulla suscipit amet ex neque molestias illo dolores soluta officiis
-        quasi pariatur dolore ratione quaerat rerum id recusandae, temporibus doloremque, hic similique et
-        deleniti! Et, dolores itaque?</span>
-    <span>Iure laboriosam quibusdam nesciunt consectetur labore inventore neque quasi. Recusandae saepe
-        explicabo voluptate, praesentium quidem porro officia earum laboriosam libero. Distinctio exercitationem
-        atque placeat rerum reprehenderit unde mollitia nam architecto.</span>
-    <span>In natus nihil distinctio impedit a fugiat ea, odio dolor est, rem dolorum atque molestias! Adipisci
-        numquam suscipit iure asperiores nemo! Doloribus sed voluptate unde, iure nulla nam quibusdam
-        eligendi?</span>
+    Nous sommes une équipe de rédacteurs enthousiastes et dévoués, animés par la passion de l'écriture et du partage de connaissances. Chaque jour, nous parcourons le monde de l'information pour vous apporter des articles frais, pertinents et enrichissants.
 </p>
 
 <?php include_once 'layout/footer.php';?>

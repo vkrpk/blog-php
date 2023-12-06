@@ -14,3 +14,13 @@ img.banner+small {
 	display         : inline-block;
 	vertical-align  : top;
 }
+
+body {
+	min-height:100vh; /* 1 */
+	display:flex; /* 2 */
+	flex-direction:column; /* 3 */
+}
+
+.scroll{
+	flex-grow:1;
+}

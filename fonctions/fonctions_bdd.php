@@ -2,10 +2,11 @@
 
 function connectDB() {
 	include __DIR__ . '/../config/config_bdd.php';
-	
 	try {
-		$bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password);
-
+		$bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password, [
+            'charset' => 'utf8',
+//            'port' => '3306',
+        ]);
 		return $bdd;
 	} catch (PDOException $e) {
 		include __DIR__ . '/../erreurs/500.php';
@@ -29,7 +30,6 @@ function getArticle($id = null) {
 	} else {
 
 		$bdd_pdo = connectDB();
-
 		$resultat = $bdd_pdo->query('SELECT * FROM articles');
 
 		$variable_article = array();
