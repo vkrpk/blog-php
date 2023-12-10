@@ -8,8 +8,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  APP_IMAGE_NAME: ${{ github.actor }}/blog-php:latest
-  DB_IMAGE_NAME: ${{ github.actor }}/database:latest
+  APP_IMAGE_NAME: ${{ github.actor }}/blog-php_app:latest
+  DB_IMAGE_NAME: ${{ github.actor }}/database_app:latest
 
 jobs:
   publish:
