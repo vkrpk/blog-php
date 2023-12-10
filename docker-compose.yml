@@ -12,7 +12,6 @@ services:
     networks:
       - blog-php-network
   database:
-    container_name: database-mysql_8.2.0
     restart: unless-stopped
     build:
       context: ./sql
