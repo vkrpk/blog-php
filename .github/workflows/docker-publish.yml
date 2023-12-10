@@ -20,8 +20,14 @@ jobs:
       - name: Login
         run: |
           echo ${{ secrets.PAT }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-      - name: Build and Publish Backend
+      - name: Build and Publish App
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
-          
+          docker-compose build app
+          docker tag app:latest ${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}
+          docker push ${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}
+      - name: Build and Publish Database (if needed)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker-compose build database
+          docker tag database-mysql_8.2.0:latest ${{ env.REGISTRY }}/${{ env.DB_IMAGE_NAME }}
+          docker push ${{ env.REGISTRY }}/${{ env.DB_IMAGE_NAME }}

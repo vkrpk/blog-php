@@ -35,22 +35,6 @@ services:
       - PMA_HOST=database
     networks:
       - blog-php-network
-#  httpd:
-#    stdin_open: true
-#    tty: true
-#    container_name: httpd-blog-php
-#    ports:
-#      - 8080:80
-#    volumes:
-#      - '"$PWD":/usr/local/apache2/htdocs/'
-#    image: httpd:2.4
-#  app:
-#    depends_on:
-#      - bdd
-#    container_name: app
-#    build: . # Si on a plusieurs Dockerfile, on peut préciser lequel on veut utiliser
-#    ports:
-#      - '3001:3000'
 
 volumes:
   mysql_8.2.0:
