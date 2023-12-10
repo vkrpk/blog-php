@@ -9,7 +9,8 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.actor }}/blog-php:latest
-  
+  DB_IMAGE_NAME: ${{ github.actor }}/database:latest
+
 jobs:
   publish:
     name: publish image
