@@ -9,7 +9,7 @@ function connectDB() {
         ]);
 		return $bdd;
 	} catch (PDOException $e) {
-		include __DIR__ . '/../erreurs/500.php';
+		include __DIR__ . '/../errors/500.php';
 		die();
 	}
 }

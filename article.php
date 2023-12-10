@@ -6,7 +6,7 @@ if (!empty($_GET['id'])) {
     $article = getArticle($_GET['id']);
 
     if ($article == false) {
-        include_once 'erreurs/404.php';
+        include_once 'errors/404.php';
         die;
     }
 
@@ -27,6 +27,6 @@ if (!empty($_GET['id'])) {
 
 <?php include_once 'layout/footer.php';
 } else {
-    include_once 'erreurs/404.php';
+    include_once 'errors/404.php';
     die;
 }

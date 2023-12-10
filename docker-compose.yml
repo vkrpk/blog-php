@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  app:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    networks:
+      - blog-php-network
   database:
     container_name: database-mysql_8.2.0
     restart: unless-stopped
@@ -25,6 +35,15 @@ services:
       - PMA_HOST=database
     networks:
       - blog-php-network
+#  httpd:
+#    stdin_open: true
+#    tty: true
+#    container_name: httpd-blog-php
+#    ports:
+#      - 8080:80
+#    volumes:
+#      - '"$PWD":/usr/local/apache2/htdocs/'
+#    image: httpd:2.4
 #  app:
 #    depends_on:
 #      - bdd

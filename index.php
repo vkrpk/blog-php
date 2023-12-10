@@ -7,7 +7,6 @@ if (!empty($_SESSION['pseudo'])) {
 } else {
     $pseudo = 'visiteur';
 }
-
 ?>
 
 
