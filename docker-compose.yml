@@ -3,14 +3,17 @@ version: '3.8'
 services:
   app:
     build: .
-    ports:
-      - "80:80"
     volumes:
       - .:/app
     depends_on:
       - database
+    labels:
+      - "traefik.http.routers.blog-php.rule=Host(`blog-php.victork.fr`)"
+      - "traefik.http.routers.blog-php-tls.tls.domains[0].main=blog-php.victork.fr"
+      - "traefik.http.routers.blog-php-tls.tls.domains[0].sans=blog-php-*.victork.fr"
+      - "traefik.http.routers.blog-php.tls=true"
     networks:
-      - blog-php-network
+      - traefik
   database:
     restart: unless-stopped
     build:
@@ -18,7 +21,7 @@ services:
     volumes:
       - mysql_8.2.0:/var/lib/mysql
     networks:
-      - blog-php-network
+      - traefik
     ports:
         - '3306:3306'
         - '33060:33060'
@@ -33,14 +36,15 @@ services:
     environment:
       - PMA_HOST=database
     networks:
-      - blog-php-network
+      - traefik
 
 volumes:
   mysql_8.2.0:
   
 networks:
-  blog-php-network:
-  
+  traefik:
+    name: traefik_webgateway
+    external: true
   
   
   
