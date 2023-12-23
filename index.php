@@ -11,7 +11,7 @@ if (!empty($_SESSION['pseudo'])) {
 
 
 <div class="jumbotron">
-    <h1 class="display-4">Bienvenue sur blog-php</h1>
+    <h1 class="display-4">Bienvenue sur Articles.fr</h1>
     <p class="lead">Bonjour <?php echo $pseudo; ?>,</p>
     <hr class="my-2">
     <p>Découvrez un monde de connaissances et de découvertes. Sur notre site, nous nous efforçons de partager des informations utiles et intéressantes pour tous nos lecteurs. Que vous soyez passionné par la science, l'art, la technologie ou la culture, il y a toujours quelque chose de nouveau et d'excitant à explorer.</p>
