@@ -47,7 +47,7 @@ jobs:
       - name: connect and pull
         run: |
           echo ${{ secrets.WORK_DIR }}
-          ssh -p 53572 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd \"{{ secrets.WORK_DIR }}\" && docker compose pull && docker compose up -d && exit"
+          ssh -p 53572 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && docker compose pull && docker compose up -d && exit"
       - name: cleanup
         run: rm -rf ~/.ssh
         
