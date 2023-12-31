@@ -2,49 +2,58 @@ version: '3.8'
 
 services:
   app:
-    build: .
+    build:
+      dockerfile: Dockerfile
+      context: .
     volumes:
       - .:/app
     depends_on:
-      - database
-    labels:
-      - "traefik.http.routers.blog-php.rule=Host(`blog-php.victork.fr`)"
-      - "traefik.http.routers.blog-php-tls.tls.domains[0].main=blog-php.victork.fr"
-      - "traefik.http.routers.blog-php-tls.tls.domains[0].sans=blog-php-*.victork.fr"
-      - "traefik.http.routers.blog-php.tls=true"
-    networks:
-      - traefik
-  database:
-    restart: unless-stopped
+      - db
+    ports:
+      - '8000:80'
+
+  db:
+    restart: always
     build:
       context: ./sql
     volumes:
       - mysql_8.2.0:/var/lib/mysql
-    networks:
-      - traefik
     ports:
-        - '3306:3306'
-        - '33060:33060'
-  phpmyadmin:
+      - '3306:3306'
+      - '33060:33060'
+  adminer:
     depends_on:
-      - database
-    container_name: phpmyadmin-mysql-mysql_8.2.0
-    image: phpmyadmin:5.2.1-apache
-    restart: unless-stopped
+      - db
+    image: adminer
+    restart: always
     ports:
-      - '3308:80'
-    environment:
-      - PMA_HOST=database
-    networks:
-      - traefik
+      - "8080:8080"
 
 volumes:
   mysql_8.2.0:
+
+#networks:
+#  traefik:
+#    name: traefik_webgateway
+#    external: true
+#
+  #    labels:
+  #      - "traefik.http.routers.blog-php.rule=Host(`blog-php.victork.fr`)"
+  #      - "traefik.http.routers.blog-php-tls.tls.domains[0].main=blog-php.victork.fr"
+  #      - "traefik.http.routers.blog-php-tls.tls.domains[0].sans=blog-php-*.victork.fr"
+  #      - "traefik.http.routers.blog-php.tls=true"
+  #    networks:
+  #      - traefik
   
-networks:
-  traefik:
-    name: traefik_webgateway
-    external: true
-  
-  
-  
+  #  phpmyadmin:
+  #    depends_on:
+  #      - db
+  #    container_name: phpmyadmin-mysql-mysql_8.2.0
+  #    image: phpmyadmin:5.2.1-apache
+  #    restart: unless-stopped
+  #    ports:
+  #      - '3308:80'
+  #    environment:
+  #      - PMA_HOST=db
+  #    networks:
+  #      - traefik

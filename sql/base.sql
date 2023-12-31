@@ -8,8 +8,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `formawave_php_fil_rouge` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `formawave_php_fil_rouge`;
+CREATE DATABASE IF NOT EXISTS `blog-php` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `blog-php`;
 
 # DROP TABLE IF EXISTS `articles`;
 CREATE TABLE  `articles` (

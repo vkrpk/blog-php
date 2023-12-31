@@ -1,6 +1,6 @@
 <?php
 
-$host = 'database';
-$dbName = 'formawave_php_fil_rouge';
+$host = 'db';
+$dbName = 'blog-php';
 $user = 'root';
 $password = 'root';
