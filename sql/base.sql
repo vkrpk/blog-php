@@ -11,7 +11,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `blog-php` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `blog-php`;
 
-# DROP TABLE IF EXISTS `articles`;
+DROP TABLE IF EXISTS `articles`;
 CREATE TABLE  `articles` (
   `id` int(10) UNSIGNED NOT NULL,
   `titre` varchar(255) COLLATE utf8_bin NOT NULL,
