@@ -3,10 +3,7 @@
 function connectDB() {
 	include __DIR__ . '/../config/config_bdd.php';
 	try {
-		$bdd = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $user, $password, [
-            'charset' => 'utf8',
-//            'port' => '3306',
-        ]);
+		$bdd = new PDO('mysql:host=' . $host . ';port=' . $db_port . ';dbname=' . $dbName . ';charset=utf8', $user, $password);
 		return $bdd;
 	} catch (PDOException $e) {
 		include __DIR__ . '/../errors/500.php';
